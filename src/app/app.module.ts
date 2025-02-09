@@ -10,6 +10,7 @@ import { LivroListaComponent } from './components/livro-lista/livro-lista.compon
 import { AutorListaComponent } from './components/autor-lista/autor-lista.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AutorFormularioComponent } from './components/autor-formulario/autor-formulario.component';
+import { AssuntoFormularioComponent } from './components/assunto-formulario/assunto-formulario.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AutorFormularioComponent } from './components/autor-formulario/autor-fo
     AutorListaComponent,    
     AutorFormularioComponent,
     AssuntoListaComponent,
+    AssuntoFormularioComponent,
     LivroListaComponent
   ],
   imports: [

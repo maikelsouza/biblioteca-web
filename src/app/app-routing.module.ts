@@ -5,6 +5,7 @@ import { AssuntoListaComponent } from './components/assunto-lista/assunto-lista.
 import { LivroListaComponent } from './components/livro-lista/livro-lista.component';
 import { AppComponent } from './app.component';
 import { AutorFormularioComponent } from './components/autor-formulario/autor-formulario.component';
+import { AssuntoFormularioComponent } from './components/assunto-formulario/assunto-formulario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,10 +13,12 @@ const routes: Routes = [
   { path: 'autores', component: AutorListaComponent },
   { path: 'autores/novo', component: AutorFormularioComponent },
   { path: 'autores/editar/:id', component: AutorFormularioComponent },
+  { path: 'assuntos', component: AssuntoListaComponent },
+  { path: 'assuntos/novo', component: AssuntoFormularioComponent },
+  { path: 'assuntos/editar/:id', component: AssuntoFormularioComponent },
   { path: 'livros', component: LivroListaComponent },
   //{ path: 'livros/editar/:id', component: EditarLivroComponent },
-  { path: 'assuntos', component: AssuntoListaComponent },
-  //{ path: 'assunto/editar/:id', component: EditarAssuntoComponent },
+  
 ];
 
 @NgModule({

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Autor</title>
+  <title>Cadastro de Assunto</title>
 </head>
 <body>
 
@@ -11,8 +11,8 @@
 
   <form [formGroup]="formulario">
 
-    <label for="inputTexto">Nome:</label>
-    <input type="text" id="nome" formControlName="nome" placeholder="Nome">    
+    <label for="inputTexto">Descricao:</label>
+    <input type="text" id="descricao" formControlName="descricao" placeholder="Descrição">    
     <button (click)="salvar()">Salvar</button>
     
   </form>
