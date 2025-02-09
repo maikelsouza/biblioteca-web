@@ -21,6 +21,14 @@
     <input type="text" id="anoPublicacao" formControlName="anoPublicacao" placeholder="Ano Publicação">
     <label for="inputTexto">Valor:</label>
     <input type="text" id="valor" formControlName="valor" placeholder="Valor">
+    <label for="autor">Autores:</label>
+    <select id="autor" formControlName="autores" multiple>
+      <option *ngFor="let autor of autores" [value]="autor.codAu">{{ autor.nome }}</option>
+    </select>
+    <label for="autor">Assuntos:</label>
+    <select id="assuntos" formControlName="assuntos" multiple>
+      <option *ngFor="let assunto of assuntos" [value]="assunto.codAs">{{ assunto.descricao }}</option>
+    </select> 
     <button (click)="salvar()">Salvar</button>
     
   </form>

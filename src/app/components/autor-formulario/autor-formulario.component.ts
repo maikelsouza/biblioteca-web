@@ -27,7 +27,7 @@ export class AutorFormularioComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     
     this.formulario = this.fb.group({
-      nome: ['', [Validators.required, Validators.maxLength(40)]]  // Criando um controle de texto
+      nome: ['', [Validators.required, Validators.maxLength(40)]] 
     });
 
     if (id) {
