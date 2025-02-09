@@ -1,5 +1,5 @@
 
-import { AssuntoDto } from "./Assunto-dto";
+import { AssuntoDto } from "./assunto-dto";
 import { AutorDto } from "./autor-dto";
 
 export class LivroDto {

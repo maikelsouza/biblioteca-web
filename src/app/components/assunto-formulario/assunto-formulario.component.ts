@@ -11,7 +11,7 @@ import { AssuntoService } from 'src/app/services/assunto.service';
 })
 export class AssuntoFormularioComponent implements OnInit {
 
-  formulario: FormGroup;
+    formulario: FormGroup;
   
     assuntoDto: AssuntoDto = new AssuntoDto();
   

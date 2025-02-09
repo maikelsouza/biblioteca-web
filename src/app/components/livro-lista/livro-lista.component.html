@@ -1,6 +1,37 @@
-<h2>Lista de Livros</h2>
-<ul>
-  <li *ngFor="let livro of livros">
-    {{ livro.titulo }}
-  </li>
-</ul>
+<!DOCTYPE html>
+  <html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Livros</title>
+  </head>
+<body>
+  <h2>Lista de Livros</h2>    
+     <table border="1">
+      <thead>
+        <tr>                
+          <th>Nome</th>
+          <th>Ano Publicação</th>
+          <th>Editora</th>
+          <th>Edição</th>
+          <th>Valor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let livro of livros">                
+          <td>{{livro.titulo}}</td>
+          <td>{{livro.anoPublicacao}}</td>
+          <td>{{livro.editora}}</td>
+          <td>{{livro.edicao}}</td>
+          <td>{{livro.valor}}</td>          
+          <td>
+            <button (click)="editar(livro.codL)">Editar</button>
+            <button (click)="confirmarExclusao(livro.codL)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="novo()">Criar Novo Autor</button>
+  </body>
+</html>
