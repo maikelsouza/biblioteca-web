@@ -22,9 +22,16 @@ export class AutorService {
     return this.http.post<any>(`${this.apiUrl}`, autorDTO);
   }
 
+  atualizar(autorDTO: AutorDto, id: number): Observable<void>{
+    return this.http.put<any>(`${this.apiUrl}/${id}`, autorDTO);
+  }
 
   excluir(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }  
+
+  buscarPorId(id: number): Observable<AutorDto> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }  
 
 

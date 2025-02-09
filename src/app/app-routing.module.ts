@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: AppComponent },
   { path: 'autores', component: AutorListaComponent },
   { path: 'autores/novo', component: AutorFormularioComponent },
-  //{ path: 'autores/editar/:id', component: EditarAutorComponent },
+  { path: 'autores/editar/:id', component: AutorFormularioComponent },
   { path: 'livros', component: LivroListaComponent },
   //{ path: 'livros/editar/:id', component: EditarLivroComponent },
   { path: 'assuntos', component: AssuntoListaComponent },

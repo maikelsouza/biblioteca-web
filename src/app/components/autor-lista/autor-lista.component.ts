@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AutorService } from '../../services/autor.service';
+import { Router } from '@angular/router';
 import { AutorDto } from 'src/app/dto/autor-dto';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AutorService } from '../../services/autor.service';
 
 @Component({
   selector: 'app-autor-lista',  
@@ -13,8 +13,7 @@ export class AutorListaComponent implements OnInit{
 
   autores: AutorDto[] = [];
 
-  constructor(private autorService: AutorService,
-              private route: ActivatedRoute,
+  constructor(private autorService: AutorService,              
               private router: Router
   ) {}
 
@@ -33,6 +32,10 @@ export class AutorListaComponent implements OnInit{
 
   novo(){
     this.router.navigate(['/autores/novo']);
+  }
+
+  editar(id: number){    
+    this.router.navigate(['/autores/editar/',id]);
   }
 
   excluir(id: number){
