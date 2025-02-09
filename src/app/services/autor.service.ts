@@ -18,4 +18,15 @@ export class AutorService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  salvar(autorDTO: AutorDto): Observable<void>{
+    return this.http.post<any>(`${this.apiUrl}`, autorDTO);
+  }
+
+
+  excluir(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }  
+
+
+
 }

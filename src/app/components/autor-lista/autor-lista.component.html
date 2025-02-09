@@ -1,7 +1,30 @@
-<h2>Lista de Autores</h2>
-<ul>
-  <li *ngFor="let autor of autores">
-    {{ autor.nome }}
-  </li>
-</ul>
+<!DOCTYPE html>
+  <html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Atores</title>
+  </head>
+<body>
+  <h2>Lista de Autores</h2>    
+     <table border="1">
+      <thead>
+        <tr>                
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autor of autores">                
+          <td>{{autor.nome}}</td>
+          <td>
+            <button (click)="editar(autor.codAu)">Editar</button>
+            <button (click)="confirmarExclusao(autor.codAu)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
+    <button (click)="novo()">Criar Novo Ator</button>
+  </body>
+</html>
