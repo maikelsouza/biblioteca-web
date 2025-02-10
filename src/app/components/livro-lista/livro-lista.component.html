@@ -26,7 +26,7 @@
           <td>{{livro.anoPublicacao}}</td>
           <td>{{livro.editora}}</td>
           <td>{{livro.edicao}}</td>
-          <td>{{livro.valor}}</td>  
+          <td>{{livro.valor | currency:'BRL':'symbol' }}</td>  
           <td>
             <ul>
               <li *ngFor="let autor of livro.autores">{{ autor.nome }}</li>
