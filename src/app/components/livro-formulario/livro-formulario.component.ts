@@ -64,8 +64,13 @@ export class LivroFormularioComponent implements OnInit {
     
       salvar(){
         if (this.formulario.valid) {
-          const { titulo, editora, edicao, anoPublicacao, valor } = this.formulario.value;
-          if (this.isSalvar){        
+          this.livroDto = {            
+            ...this.formulario.value, 
+            autores: this.autores.filter(a => this.formulario.value.autores.includes(a.codAu)),
+            assuntos: this.assuntos.filter(a => this.formulario.value.assuntos.includes(a.codAs))
+        };
+
+        if (this.isSalvar){        
             this.livroService.salvar(this.livroDto).subscribe(
               response => {
                 console.log("Livro salvo com sucesso!", response);

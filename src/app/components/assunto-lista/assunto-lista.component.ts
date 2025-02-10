@@ -27,7 +27,7 @@ export class AssuntoListaComponent implements OnInit {
       next: (data) => {        
         this.assuntos = data;
       },
-      error: (error) => console.error('Erro ao buscar autores:', error)
+      error: (error) => console.error('Erro ao buscar assunto:', error)
     });
   }
 
