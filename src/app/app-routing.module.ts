@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AutorFormularioComponent } from './components/autor-formulario/autor-formulario.component';
 import { AssuntoFormularioComponent } from './components/assunto-formulario/assunto-formulario.component';
 import { LivroFormularioComponent } from './components/livro-formulario/livro-formulario.component';
+import { RelatorioComponent } from './components/relatorio/relatorio.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'livros', component: LivroListaComponent },
   { path: 'livros/novo', component: LivroFormularioComponent },
   { path: 'livros/editar/:id', component: LivroFormularioComponent },
+  { path: 'relatorios', component: RelatorioComponent },
   
 ];
 

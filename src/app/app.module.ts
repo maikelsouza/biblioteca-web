@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AutorFormularioComponent } from './components/autor-formulario/autor-formulario.component';
 import { AssuntoFormularioComponent } from './components/assunto-formulario/assunto-formulario.component';
 import { LivroFormularioComponent } from './components/livro-formulario/livro-formulario.component';
+import { RelatorioComponent } from './components/relatorio/relatorio.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LivroFormularioComponent } from './components/livro-formulario/livro-fo
     AssuntoListaComponent,
     AssuntoFormularioComponent,
     LivroListaComponent,
-    LivroFormularioComponent
+    LivroFormularioComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,

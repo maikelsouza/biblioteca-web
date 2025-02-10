@@ -10,7 +10,7 @@ export class LivroService {
 
   private apiUrl = "http://localhost:8080/api/livros";
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   buscarTodos(): Observable<LivroDto[]> {
     return this.http.get<any[]>(this.apiUrl);

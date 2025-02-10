@@ -9,8 +9,7 @@ import { AutorDto } from '../dto/autor-dto';
 })
 export class AutorService {
 
-  private apiUrl = "http://localhost:8080/api/autores";
-  
+  private apiUrl = "http://localhost:8080/api/autores";  
 
   constructor(private http: HttpClient) {}
 
