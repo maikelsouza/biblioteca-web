@@ -64,7 +64,7 @@ export class LivroFormularioComponent implements OnInit {
     
       salvar(){
         if (this.formulario.valid) {
-          this.livroDto.titulo = this.formulario.value.titulo;
+          const { titulo, editora, edicao, anoPublicacao, valor } = this.formulario.value;
           if (this.isSalvar){        
             this.livroService.salvar(this.livroDto).subscribe(
               response => {
@@ -106,7 +106,7 @@ export class LivroFormularioComponent implements OnInit {
         next: (data) => {        
           this.assuntos = data;
         },
-        error: (error) => console.error('Erro ao buscar autores:', error)
+        error: (error) => console.error('Erro ao buscar assuntos:', error)
       });
     }
   
