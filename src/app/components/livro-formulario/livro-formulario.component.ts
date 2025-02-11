@@ -100,6 +100,10 @@ export class LivroFormularioComponent implements OnInit {
         }
       }
 
+      voltar(){
+        this.router.navigate(['/livros']);
+      }
+
 
     bucarTodosAutores(){
       this.autorService.buscarTodos().subscribe({

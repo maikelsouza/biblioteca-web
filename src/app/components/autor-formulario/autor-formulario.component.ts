@@ -73,4 +73,8 @@ export class AutorFormularioComponent implements OnInit {
     }
   }
 
+  voltar(){
+    this.router.navigate(['/autores']);
+  }
+
 }

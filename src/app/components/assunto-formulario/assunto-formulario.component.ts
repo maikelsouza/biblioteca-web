@@ -73,6 +73,10 @@ export class AssuntoFormularioComponent implements OnInit {
           console.log('Formulário inválido');
       }
     }
+
+    voltar(){
+      this.router.navigate(['/assuntos']);
+    }
   
 
 }
