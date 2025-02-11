@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LivroDto } from '../dto/livro-dto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivroService {
-
-  private apiUrl = "http://localhost:8080/api/livros";
+  
+  private apiUrl = `${environment.apiBaseUrl}/livros`;
 
   constructor(private http: HttpClient) { }
 

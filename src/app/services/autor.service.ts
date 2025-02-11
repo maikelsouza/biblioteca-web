@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { AutorDto } from '../dto/autor-dto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutorService {
 
-  private apiUrl = "http://localhost:8080/api/autores";  
+  private apiUrl = `${environment.apiBaseUrl}/autores`;
 
   constructor(private http: HttpClient) {}
 

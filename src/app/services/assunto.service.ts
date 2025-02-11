@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AssuntoDto } from '../dto/assunto-dto';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -10,7 +11,7 @@ import { AssuntoDto } from '../dto/assunto-dto';
 })
 export class AssuntoService {
 
-  private apiUrl = "http://localhost:8080/api/assuntos";
+  private apiUrl = `${environment.apiBaseUrl}/assuntos`;
 
   constructor(private http: HttpClient) { }
  

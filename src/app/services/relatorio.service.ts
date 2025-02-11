@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RelatorioService {
+export class RelatorioService {  
 
-  private apiUrl = "http://localhost:8080/api/relatorios";
+  private apiUrl = `${environment.apiBaseUrl}/relatorios`;
 
   constructor(private http: HttpClient) { }
 
