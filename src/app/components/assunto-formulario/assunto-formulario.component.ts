@@ -16,6 +16,8 @@ export class AssuntoFormularioComponent implements OnInit {
     assuntoDto: AssuntoDto = new AssuntoDto();
   
     isSalvar: boolean = true;
+
+    titulo: string = "";
   
     constructor(private fb: FormBuilder,
       private assuntoService: AssuntoService,
@@ -25,12 +27,14 @@ export class AssuntoFormularioComponent implements OnInit {
   
     ngOnInit() {
       const id = this.route.snapshot.paramMap.get('id');
+      this.titulo = "Cadastrar de Assunto";
       
       this.formulario = this.fb.group({
         descricao: ['', [Validators.required, Validators.maxLength(20)]]  
       });
   
       if (id) {
+        this.titulo = "Atualizar de Assunto";
         this.isSalvar = false;
         this.assuntoService.buscarPorId(Number(id)).subscribe(autor => {
           this.formulario.patchValue(autor); 
