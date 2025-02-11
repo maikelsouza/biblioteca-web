@@ -24,6 +24,8 @@ export class LivroFormularioComponent implements OnInit {
       assuntos: AssuntoDto[] = [];
     
       isSalvar: boolean = true;
+
+      titulo: string = "";
     
       constructor(private fb: FormBuilder,
         private livroService: LivroService,
@@ -37,6 +39,7 @@ export class LivroFormularioComponent implements OnInit {
         this.bucarTodosAutores();
         this.bucarTodosAssuntos();
         const id = this.route.snapshot.paramMap.get('id');
+        this.titulo = "Cadastrar Livro";
         
         this.formulario = this.fb.group({
           titulo: ['', [Validators.required, Validators.maxLength(40)]],  
@@ -49,6 +52,7 @@ export class LivroFormularioComponent implements OnInit {
         });
     
         if (id) {
+          this.titulo = "Atualizar Livro";
           this.isSalvar = false;
           this.livroService.buscarPorId(Number(id)).subscribe(livro => {
             this.formulario.patchValue(livro);             

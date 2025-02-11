@@ -27,13 +27,13 @@ export class AutorFormularioComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.titulo = "Cadastrar de Autor";
+    this.titulo = "Cadastrar Autor";
     this.formulario = this.fb.group({
       nome: ['', [Validators.required, Validators.maxLength(40)]] 
     });
 
     if (id) {
-      this.titulo = "Atualizar de Autor";
+      this.titulo = "Atualizar Autor";
       this.isSalvar = false;
       this.autorService.buscarPorId(Number(id)).subscribe(autor => {
         this.formulario.patchValue(autor); 
