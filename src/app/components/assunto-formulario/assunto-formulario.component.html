@@ -6,16 +6,17 @@
   <title>{{titulo}}</title>
 </head>
 <body>
+  <div class="container mt-5">
+      <h2>{{titulo}}</h2>
+      <form [formGroup]="formulario">
+        <div class="mb-3">
+          <label for="inputTexto">Descricao:</label>
+          <input type="text" id="descricao" formControlName="descricao">  
+        </div>
 
-  <h2>{{titulo}}</h2>
-
-  <form [formGroup]="formulario">
-
-    <label for="inputTexto">Descricao:</label>
-    <input type="text" id="descricao" formControlName="descricao" placeholder="Descrição">    
-    <button (click)="salvar()">Salvar</button>
-    <button (click)="voltar()">Voltar</button>
-    
-  </form>
+        <button type="button" class="btn btn-primary me-2" (click)="salvar()">Salvar</button>      
+        <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>      
+      </form>
+  </div>
 </body>
 </html>

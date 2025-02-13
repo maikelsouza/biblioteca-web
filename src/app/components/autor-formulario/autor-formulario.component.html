@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{titulo}}</title>
+  <title>{{titulo}}</title>  
 </head>
 <body>
+  <div class="container mt-5">
+    <h2>{{titulo}}</h2>
 
-  <h2>{{titulo}}</h2>
+    <form [formGroup]="formulario" >
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" id="nome" formControlName="nome" class="form-control">
+      </div>
 
-  <form [formGroup]="formulario">
-
-    <label for="inputTexto">Nome:</label>
-    <input type="text" id="nome" formControlName="nome" placeholder="Nome">    
-    <button (click)="salvar()">Salvar</button>
-    <button (click)="voltar()">Voltar</button>
-    
-  </form>
+      <button type="button" class="btn btn-primary me-2" (click)="salvar()">Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>
+    </form>
+  </div>
 </body>
 </html>

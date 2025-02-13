@@ -45,8 +45,8 @@ export class LivroFormularioComponent implements OnInit {
           titulo: ['', [Validators.required, Validators.maxLength(40)]],  
           editora: ['', [Validators.required, Validators.maxLength(40)]],            
           edicao: [''],  
-          anoPublicacao: [''],  
-          valor: ['', [Validators.required]],  
+          anoPublicacao: ['',[Validators.required,Validators.pattern('^[0-9]{4}$')]],  
+          valor: ['', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]],  
           autores: [[]],
           assuntos: [[]]
         });
@@ -104,6 +104,31 @@ export class LivroFormularioComponent implements OnInit {
         this.router.navigate(['/livros']);
       }
 
+    onAnoPublicacaoInput() {
+      const anoPublicacaoControl = this.formulario.get('anoPublicacao');
+      let value = anoPublicacaoControl.value;
+      value = value.replace(/[^0-9]/g, '').slice(0, 4);
+      anoPublicacaoControl.setValue(value);
+    }
+
+    onValorInput() {
+      const valorControl = this.formulario.get('valor');
+      let value = valorControl?.value;
+  
+      if (value) {
+        // Remove qualquer coisa que não seja número ou ponto decimal
+        value = value.replace(/[^0-9.,]/g, '').replace(/,/g, '.'); // Substitui a vírgula por ponto decimal
+  
+        // Limita a 2 casas decimais
+        let [integer, decimal] = value.split('.');
+        if (decimal) {
+          decimal = decimal.substring(0, 2); // Limita a 2 casas decimais
+        }
+        value = decimal ? `${integer}.${decimal}` : integer;
+  
+        valorControl?.setValue(value);
+      }
+    }
 
     bucarTodosAutores(){
       this.autorService.buscarTodos().subscribe({

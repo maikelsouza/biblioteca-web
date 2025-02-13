@@ -3,34 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{titulo}}</title>
+  <title>{{ titulo }}</title>  
 </head>
 <body>
 
-  <h2>{{titulo}}</h2>
+  <div class="container mt-5">
+    <h2 class="mb-4">{{titulo}}</h2>
 
-  <form [formGroup]="formulario">
+    <form [formGroup]="formulario" class="row g-3">
+      <div class="col-md-6">
+        <label for="titulo" class="form-label">Título:</label>
+        <input type="text" id="titulo" formControlName="titulo" class="form-control">
+      </div>
 
-    <label for="inputTexto">Título:</label>
-    <input type="text" id="titulo" formControlName="titulo" placeholder="Título">    
-    <label for="inputTexto">Editora:</label>
-    <input type="text" id="editora" formControlName="editora" placeholder="Editora">    
-    <label for="inputTexto">Edição:</label>
-    <input type="text" id="edicao" formControlName="edicao" placeholder="Edição">
-    <label for="inputTexto">Ano Publicação:</label>
-    <input type="text" id="anoPublicacao" formControlName="anoPublicacao" placeholder="Ano Publicação">
-    <label for="inputTexto">Valor:</label>
-    <input type="text" id="valor" formControlName="valor" placeholder="Valor">
-    <label for="autor">Autores:</label>
-    <select id="autor" formControlName="autores" multiple>
-      <option *ngFor="let autor of autores" [value]="autor.codAu">{{ autor.nome }}</option>
-    </select>
-    <label for="autor">Assuntos:</label>
-    <select id="assuntos" formControlName="assuntos" multiple>
-      <option *ngFor="let assunto of assuntos" [value]="assunto.codAs">{{ assunto.descricao }}</option>
-    </select> 
-    <button (click)="salvar()">Salvar</button>
-    <button (click)="voltar()">Voltar</button>
-  </form>
+      <div class="col-md-6">
+        <label for="editora" class="form-label">Editora:</label>
+        <input type="text" id="editora" formControlName="editora" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label for="edicao" class="form-label">Edição:</label>
+        <input type="text" id="edicao" formControlName="edicao" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label for="anoPublicacao" class="form-label">Ano Publicação:</label>
+        <input type="text" id="anoPublicacao" formControlName="anoPublicacao" class="form-control" (input)="onAnoPublicacaoInput()" >
+      </div>
+
+      <div class="col-md-4">
+        <label for="valor" class="form-label">Valor:</label>
+        <input type="text" id="valor" formControlName="valor" class="form-control" placeholder="R$ 0,00" (input)="onValorInput()">
+      </div>
+
+      <div class="col-md-6">
+        <label for="autor" class="form-label">Autores:</label>
+        <select id="autor" formControlName="autores" class="form-select" multiple>
+          <option *ngFor="let autor of autores" [value]="autor.codAu">{{ autor.nome }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label for="assuntos" class="form-label">Assuntos:</label>
+        <select id="assuntos" formControlName="assuntos" class="form-select" multiple>
+          <option *ngFor="let assunto of assuntos" [value]="assunto.codAs">{{ assunto.descricao }}</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <button type="button" class="btn btn-primary me-2" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Link para o JS do Bootstrap (opcional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

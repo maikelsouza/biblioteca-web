@@ -6,44 +6,47 @@
     <title>Lista de Livros</title>
   </head>
 <body>
-  <h2>Lista de Livros</h2>    
-     <table border="1">
-      <thead>
-        <tr>                
-          <th>Nome</th>
-          <th>Ano Publicação</th>
-          <th>Editora</th>
-          <th>Edição</th>
-          <th>Valor</th>
-          <th>Autores</th>
-          <th>Assuntos</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let livro of livros">                
-          <td>{{livro.titulo}}</td>
-          <td>{{livro.anoPublicacao}}</td>
-          <td>{{livro.editora}}</td>
-          <td>{{livro.edicao}}</td>
-          <td>{{livro.valor | currency:'BRL':'symbol' }}</td>  
-          <td>
-            <ul>
-              <li *ngFor="let autor of livro.autores">{{ autor.nome }}</li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li *ngFor="let assunto of livro.assuntos">{{ assunto.descricao }}</li>
-            </ul>
-          </td>
-          <td>
-            <button (click)="editar(livro.codL)">Editar</button>
-            <button (click)="confirmarExclusao(livro.codL)">Excluir</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button (click)="novo()">Criar Novo Livro</button>
+    <div class="container mt-4">
+    <h2 class="mb-4">Lista de Livros</h2>    
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>                
+            <th scope="col">Nome</th>
+            <th scope="col">Ano Publicação</th>
+            <th scope="col">Editora</th>
+            <th scope="col">Edição</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Autores</th>
+            <th scope="col">Assuntos</th>
+            <th scope="col" class="text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let livro of livros">                
+            <td>{{livro.titulo}}</td>
+            <td>{{livro.anoPublicacao}}</td>
+            <td>{{livro.editora}}</td>
+            <td>{{livro.edicao}}</td>
+            <td>{{livro.valor | currency:'BRL':'symbol' }}</td>  
+            <td>
+              <ul>
+                <li *ngFor="let autor of livro.autores">{{ autor.nome }}</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let assunto of livro.assuntos">{{ assunto.descricao }}</li>
+              </ul>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm me-2" (click)="editar(livro.codL)">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="confirmarExclusao(livro.codL)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+        <button class="btn btn-success" (click)="novo()">Criar Novo Livro</button>
+      </table>
+    </div>
   </body>
+
 </html>
