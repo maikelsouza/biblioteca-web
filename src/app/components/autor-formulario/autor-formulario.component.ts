@@ -43,33 +43,32 @@ export class AutorFormularioComponent implements OnInit {
     }
   }
 
-  salvar(){
-    if (this.formulario.valid) {
-      this.autorDto.nome = this.formulario.value.nome;
-      if (this.isSalvar){        
-        this.autorService.salvar(this.autorDto).subscribe(
-          response => {
-            console.log("Autor salvo com sucesso!", response);
-            this.router.navigate(['/autores']);
-          },
-          error => {
-            console.error("Erro ao salvar autor:", error);
-          }
-        );
-      }else{        
-        this.autorService.atualizar(this.autorDto,Number(this.route.snapshot.paramMap.get('id'))).subscribe(
-          response => {
-            console.log("Autor atualizado com sucesso!", response);
-            this.router.navigate(['/autores']);
-          },
-          error => {
-            console.error("Erro ao atualizar autor:", error);
-          }
-        );
-      }
-      
-    }else{      
-        console.log('Formulário inválido');
+  salvar(){        
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched(); 
+      return;
+    }   
+    this.autorDto.nome = this.formulario.value.nome;
+    if (this.isSalvar){        
+      this.autorService.salvar(this.autorDto).subscribe(
+        response => {
+          console.log("Autor salvo com sucesso!", response);
+          this.router.navigate(['/autores']);
+        },
+        error => {
+          console.error("Erro ao salvar autor:", error);
+        }
+      );
+    }else{        
+      this.autorService.atualizar(this.autorDto,Number(this.route.snapshot.paramMap.get('id'))).subscribe(
+        response => {
+          console.log("Autor atualizado com sucesso!", response);
+          this.router.navigate(['/autores']);
+        },
+        error => {
+          console.error("Erro ao atualizar autor:", error);
+        }
+      );
     }
   }
 

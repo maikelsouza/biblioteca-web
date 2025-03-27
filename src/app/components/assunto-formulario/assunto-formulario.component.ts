@@ -45,33 +45,32 @@ export class AssuntoFormularioComponent implements OnInit {
     }
   
     salvar(){
-      if (this.formulario.valid) {
-        this.assuntoDto.descricao = this.formulario.value.descricao;
-        if (this.isSalvar){        
-          this.assuntoService.salvar(this.assuntoDto).subscribe(
-            response => {
-              console.log("Autor salvo com sucesso!", response);
-              this.router.navigate(['/assuntos']);
-            },
-            error => {
-              console.error("Erro ao salvar autor:", error);
-            }
-          );
-        }else{        
-          this.assuntoService.atualizar(this.assuntoDto,Number(this.route.snapshot.paramMap.get('id'))).subscribe(
-            response => {
-              console.log("Autor atualizado com sucesso!", response);
-              this.router.navigate(['/assuntos']);
-            },
-            error => {
-              console.error("Erro ao atualizar autor:", error);
-            }
-          );
-        }
-        
-      }else{      
-          console.log('Formulário inválido');
+      if (this.formulario.invalid) {
+        this.formulario.markAllAsTouched(); 
+        return;
       }
+      this.assuntoDto.descricao = this.formulario.value.descricao;
+      if (this.isSalvar){        
+        this.assuntoService.salvar(this.assuntoDto).subscribe(
+          response => {
+            console.log("Autor salvo com sucesso!", response);
+            this.router.navigate(['/assuntos']);
+          },
+          error => {
+            console.error("Erro ao salvar autor:", error);
+          }
+        );
+      }else{        
+        this.assuntoService.atualizar(this.assuntoDto,Number(this.route.snapshot.paramMap.get('id'))).subscribe(
+          response => {
+            console.log("Autor atualizado com sucesso!", response);
+            this.router.navigate(['/assuntos']);
+          },
+          error => {
+            console.error("Erro ao atualizar autor:", error);
+          }
+        );
+      }        
     }
 
     voltar(){

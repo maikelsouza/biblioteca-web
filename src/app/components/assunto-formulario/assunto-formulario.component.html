@@ -10,8 +10,18 @@
       <h2>{{titulo}}</h2>
       <form [formGroup]="formulario">
         <div class="mb-3">
-          <label for="inputTexto">Descricao:</label>
-          <input type="text" id="descricao" formControlName="descricao">  
+          <label for="inputTexto">Descricao: </label>
+          <input 
+          type="text" 
+          id="descricao" 
+          formControlName="descricao" 
+          class="form-control" 
+          [class.is-invalid]="formulario.get('descricao')?.invalid && formulario.get('descricao')?.touched">  
+
+          <div *ngIf="formulario.get('descricao')?.invalid && formulario.get('descricao')?.touched" class="invalid-feedback">
+            <span *ngIf="formulario.get('descricao')?.hasError('required')">A descrição é obrigatória.</span>
+            <span *ngIf="formulario.get('descricao')?.hasError('maxlength')">A descrição deve ter no máximo 20 caracteres.</span>
+          </div>
         </div>
 
         <button type="button" class="btn btn-primary me-2" (click)="salvar()">Salvar</button>      

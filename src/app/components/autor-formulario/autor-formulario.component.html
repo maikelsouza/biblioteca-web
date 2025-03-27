@@ -9,10 +9,21 @@
   <div class="container mt-5">
     <h2>{{titulo}}</h2>
 
-    <form [formGroup]="formulario" >
+    <form [formGroup]="formulario">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome:</label>
-        <input type="text" id="nome" formControlName="nome" class="form-control">
+        <input 
+          type="text" 
+          id="nome" 
+          formControlName="nome" 
+          class="form-control" 
+          [class.is-invalid]="formulario.get('nome')?.invalid && formulario.get('nome')?.touched"
+        >
+
+        <div *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('nome')?.hasError('required')">O nome é obrigatório.</span>
+          <span *ngIf="formulario.get('nome')?.hasError('maxlength')">O nome deve ter no máximo 40 caracteres.</span>
+        </div>
       </div>
 
       <button type="button" class="btn btn-primary me-2" (click)="salvar()">Salvar</button>
