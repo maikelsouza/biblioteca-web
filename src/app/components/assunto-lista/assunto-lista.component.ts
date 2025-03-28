@@ -39,10 +39,17 @@ export class AssuntoListaComponent implements OnInit {
     this.router.navigate(['/assuntos/editar/',id]);
   }
 
-  excluir(id: number){
-    this.assuntoService.excluir(id).subscribe(response =>{
-      this.bucarTodos();
-    })
+  excluir(id: number) {
+    this.assuntoService.excluir(id).subscribe({
+      next: () => {
+        this.bucarTodos();
+      },
+      error: (erro) => {
+        console.error("Erro ao excluir um assunto:", erro);
+        const mensagemErro = erro.error || "Erro desconhecido ao excluir um assunto.";
+        alert(mensagemErro);
+      }
+    });  
   }
 
   confirmarExclusao(id: number) {

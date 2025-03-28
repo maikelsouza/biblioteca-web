@@ -38,10 +38,17 @@ export class AutorListaComponent implements OnInit{
     this.router.navigate(['/autores/editar/',id]);
   }
 
-  excluir(id: number){
-    this.autorService.excluir(id).subscribe(response =>{
-      this.bucarTodos();
-    })
+  excluir(id: number) {
+    this.autorService.excluir(id).subscribe({
+      next: () => {
+        this.bucarTodos();
+      },
+      error: (erro) => {
+        console.error("Erro ao excluir o autor:", erro);
+        const mensagemErro = erro.error || "Erro desconhecido ao excluir o autor.";
+        alert(mensagemErro);
+      }
+    });  
   }
 
   confirmarExclusao(id: number) {
