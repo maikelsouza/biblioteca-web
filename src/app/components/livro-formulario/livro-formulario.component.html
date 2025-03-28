@@ -13,12 +13,23 @@
     <form [formGroup]="formulario" class="row g-3">
       <div class="col-md-6">
         <label for="titulo" class="form-label">Título:</label>
-        <input type="text" id="titulo" formControlName="titulo" class="form-control">
+        <input type="text" id="titulo" formControlName="titulo" class="form-control" [class.is-invalid]="formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched">
+
+        <div *ngIf="formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('titulo')?.hasError('required')">O título é obrigatório.</span>
+          <span *ngIf="formulario.get('titulo')?.hasError('maxlength')">O título deve ter no máximo 40 caracteres.</span>
+        </div>
       </div>
+      
 
       <div class="col-md-6">
         <label for="editora" class="form-label">Editora:</label>
-        <input type="text" id="editora" formControlName="editora" class="form-control">
+        <input type="text" id="editora" formControlName="editora" class="form-control" [class.is-invalid]="formulario.get('editora')?.invalid && formulario.get('editora')?.touched">
+
+        <div *ngIf="formulario.get('editora')?.invalid && formulario.get('editora')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('editora')?.hasError('required')">A editora é obrigatório.</span>
+          <span *ngIf="formulario.get('editora')?.hasError('maxlength')">A  deve ter no máximo 40 caracteres.</span>
+        </div>
       </div>
 
       <div class="col-md-4">
@@ -28,26 +39,48 @@
 
       <div class="col-md-4">
         <label for="anoPublicacao" class="form-label">Ano Publicação:</label>
-        <input type="text" id="anoPublicacao" formControlName="anoPublicacao" class="form-control" (input)="onAnoPublicacaoInput()" >
+        <input type="text" id="anoPublicacao" formControlName="anoPublicacao" class="form-control" [class.is-invalid]="formulario.get('anoPublicacao')?.invalid && formulario.get('anoPublicacao')?.touched" (input)="onAnoPublicacaoInput()" >
+
+        <div *ngIf="formulario.get('anoPublicacao')?.invalid && formulario.get('anoPublicacao')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('anoPublicacao')?.hasError('required')">O ano de publicação é obrigatório.</span>
+          <span *ngIf="formulario.get('anoPublicacao')?.hasError('pattern')"> O ano de publicação deve ter exatamente 4 dígitos numéricos.</span>
+        </div>
       </div>
 
       <div class="col-md-4">
         <label for="valor" class="form-label">Valor:</label>
-        <input type="text" id="valor" formControlName="valor" class="form-control" placeholder="R$ 0,00" (input)="onValorInput()">
+        <input type="text" id="valor" formControlName="valor" class="form-control" placeholder="R$ 0,00" step="0.01" [class.is-invalid]="formulario.get('valor')?.invalid && formulario.get('valor')?.touched" >
+
+        <div *ngIf="formulario.get('valor')?.invalid && formulario.get('valor')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('valor')?.hasError('required')">O valor é obrigatório.</span>
+          <span *ngIf="formulario.get('valor')?.hasError('pattern')"> O valor deve ser um número válido, com até duas casas decimais.</span>
+        </div>
       </div>
 
       <div class="col-md-6">
         <label for="autor" class="form-label">Autores:</label>
-        <select id="autor" formControlName="autores" class="form-select" multiple>
+        <select id="autor" formControlName="autores" class="form-select" multiple [class.is-invalid]="formulario.get('autores')?.invalid && formulario.get('autores')?.touched">
           <option *ngFor="let autor of autores" [value]="autor.codAu">{{ autor.nome }}</option>
         </select>
+
+        <div *ngIf="formulario.get('autores')?.invalid && formulario.get('autores')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('autores')?.hasError('required')">
+            Pelo menos um autor deve ser selecionado.
+          </span>
+        </div>
       </div>
 
       <div class="col-md-6">
         <label for="assuntos" class="form-label">Assuntos:</label>
-        <select id="assuntos" formControlName="assuntos" class="form-select" multiple>
+        <select id="assuntos" formControlName="assuntos" class="form-select" multiple [class.is-invalid]="formulario.get('assuntos')?.invalid && formulario.get('assuntos')?.touched">
           <option *ngFor="let assunto of assuntos" [value]="assunto.codAs">{{ assunto.descricao }}</option>
         </select>
+
+        <div *ngIf="formulario.get('assuntos')?.invalid && formulario.get('assuntos')?.touched" class="invalid-feedback">
+          <span *ngIf="formulario.get('assuntos')?.hasError('required')">
+            Pelo menos um assunto deve ser selecionado.
+          </span>
+        </div>
       </div>
 
       <div class="col-12">

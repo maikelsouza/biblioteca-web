@@ -46,9 +46,9 @@ export class LivroFormularioComponent implements OnInit {
           editora: ['', [Validators.required, Validators.maxLength(40)]],            
           edicao: [''],  
           anoPublicacao: ['',[Validators.required,Validators.pattern('^[0-9]{4}$')]],  
-          valor: ['', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]],  
-          autores: [[]],
-          assuntos: [[]]
+          valor: ['', [Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]], 
+          autores: [[], [Validators.required]],
+          assuntos: [[], [Validators.required]]
         });
     
         if (id) {
@@ -67,37 +67,38 @@ export class LivroFormularioComponent implements OnInit {
       }
     
       salvar(){
-        if (this.formulario.valid) {
-          this.livroDto = {            
-            ...this.formulario.value, 
-            autores: this.autores.filter(a => this.formulario.value.autores.includes(a.codAu)),
-            assuntos: this.assuntos.filter(a => this.formulario.value.assuntos.includes(a.codAs))
-        };
+        console.log(this.formulario.get('valor')?.errors);    
+        if (this.formulario.invalid) {
+          this.formulario.markAllAsTouched(); 
+          return;
+        }       
+        this.livroDto = {            
+          ...this.formulario.value, 
+          autores: this.autores.filter(a => this.formulario.value.autores.includes(a.codAu)),
+          assuntos: this.assuntos.filter(a => this.formulario.value.assuntos.includes(a.codAs))
+      };
 
-        if (this.isSalvar){        
-            this.livroService.salvar(this.livroDto).subscribe(
-              response => {
-                console.log("Livro salvo com sucesso!", response);
-                this.router.navigate(['/livros']);
-              },
-              error => {
-                console.error("Erro ao salvar livro:", error);
-              }
-            );
-          }else{        
-            this.livroService.atualizar(this.livroDto,Number(this.route.snapshot.paramMap.get('id'))).subscribe(
-              response => {
-                console.log("Livro atualizado com sucesso!", response);
-                this.router.navigate(['/livros']);
-              },
-              error => {
-                console.error("Erro ao atualizar livros:", error);
-              }
-            );
-          }          
-        }else{      
-            console.log('Formulário inválido');
-        }
+      if (this.isSalvar){        
+          this.livroService.salvar(this.livroDto).subscribe(
+            response => {
+              console.log("Livro salvo com sucesso!", response);
+              this.router.navigate(['/livros']);
+            },
+            error => {
+              console.error("Erro ao salvar livro:", error);
+            }
+          );
+        }else{        
+          this.livroService.atualizar(this.livroDto,Number(this.route.snapshot.paramMap.get('id'))).subscribe(
+            response => {
+              console.log("Livro atualizado com sucesso!", response);
+              this.router.navigate(['/livros']);
+            },
+            error => {
+              console.error("Erro ao atualizar livros:", error);
+            }
+          );
+        }                
       }
 
       voltar(){
